@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "38845e34-a5eb-4405-90cf-a8ed361d8326",
+		"name": "httpbin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20237099"
+	},
+	"item": [
+		{
+			"name": "get Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/get?parameter1=1&parameter2=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "parameter1",
+							"value": "1"
+						},
+						{
+							"key": "parameter2",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let reponse = pm.response.json();\r",
+							"pm.globals.set(\"uuid\", reponse.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/uuid",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
